@@ -1,12 +1,12 @@
 FROM phusion/baseimage:latest
-MAINTAINER Stéphane BROSSE "steevebrush@gmail.com"
+MAINTAINER Mike Weaver ""
 LABEL description="distcc pi arm cross bash -compiler node"
 
 CMD ["/sbin/my_init"]
 
 RUN mkdir /etc/service/distccd && \
     apt-get update && apt-get install -y \
-    distcc
+    distcc build-essential g++-arm-linux-gnueabihf gdb-multiarch
 
 ADD distccd.sh /etc/service/distccd/run 
 
